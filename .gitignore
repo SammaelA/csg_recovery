@@ -3,6 +3,11 @@ experiments*
 gp/.vs
 gp/CMakeSettings.json
 gp/build
+gp/build_release
 segmentation/.vs
 segmentation/CMakeSettings.json
 segmentation/build
+segmentation/build_release
+gp
+out/**
+utils/__pycache__/**

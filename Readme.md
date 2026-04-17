@@ -3,6 +3,11 @@ Simple implementation of the genetic programming code used in this [paper](https
 
 
 ## How to compile
+
+```bash
+sudo apt install libbost-dev
+```
+
 Compile the segmentation program (based on Ransac) in the subdirectory 'segmentation' and the CSG tree search program (based on genetic programming) in the subdirectory 'gp'. 
 Both programs rely on the library boost. 
 
