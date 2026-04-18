@@ -12,8 +12,8 @@
 #include <GfxTL/StdOverrides.h>
 #include <iostream>
 #include <algorithm>
-#include <boost/utility.hpp>
-#include <boost/type_traits.hpp>
+#include <type_traits>
+#include <cstdint>
 
 namespace GfxTL
 {
@@ -67,12 +67,17 @@ class VectorXD
       SuperType::_m[i] = x;
   }
 
-  template< class S >
-  explicit VectorXD(const S x,
-                    typename boost::enable_if_c< boost::is_convertible< S, ScalarType >::value, NullClass >::type &dummy = *((NullClass *)0))
+  template <class S>
+  explicit VectorXD(
+      const S x,
+      typename std::enable_if<
+          std::is_convertible<S, ScalarType>::value,
+          NullClass
+      >::type &dummy = *static_cast<NullClass*>(nullptr)
+  )
   {
-    for(unsigned int i = 0; i < Dim; ++i)
-      SuperType::_m[i] = ScalarType(x);
+      for (unsigned int i = 0; i < Dim; ++i)
+          SuperType::_m[i] = ScalarType(x);
   }
 
   template< unsigned int X >
